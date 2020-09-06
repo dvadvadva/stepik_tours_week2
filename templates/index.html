@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block container %}
+
+
+    <!-- HERO -->
+
+    <div class="jumbotron text-center mt-4">
+      <h1 class="display-4">Всякие туры</h1>
+      <p class="lead">Для тех, кого отвлекают дома</p>
+      <p class="mt-5 w-50 mx-auto">Лучшие направления,где никто не будет вам мешать сидеть на берегу и изучать программирование, дизайн, разработку игр и управление продуктами</p>
+    </div>
+
+    <!-- CARDS -->
+
+    <div class="row mt-5" data-test="cards">
+        {% for tour in tours %}
+        <div class="col-4" data-test="card">
+            <div class="card mb-3" >
+            <img src={{ tour.picture }} class="card-img-top img-fluid" data-test="picture">
+            <div class="card-body">
+              <h5 class="card-title">{{ tour.country }}: {{ tour.title }}</h5>
+             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">{{ tour.date }}, {{ tour.nights }} дней, {{ tour.price }} Р {{ tour.stars}}★</p>
+
+                <a href="/tour/{{ tour.id }}/" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
+            </div>
+        </div>
+        </div>{% endfor %}
+{% endblock %}

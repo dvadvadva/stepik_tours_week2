@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block container %}
+    <h1 class="display-5 mt-4">Летим  <span data-test="from">{{ departure }}</span></h1>
+    <p class="mb-4" >Найдено <span data-test="tourcount">{{ tour_count }}</span> туров, от <span data-test="pricemin">{{ price_min }}</span> до <span data-test="pricemax">{{ price_max }}</span> и от <span data-test="nightsmax">{{ nights_min }}</span> ночей до <span data-test="nightsmax">{{ nights_max }}</span> ночей</p>
+    <!-- HERO -->
+
+
+
+    <!-- CARDS -->
+
+      <div class="row mt-5" data-test="cards">
+        {% for tour in tours %}
+        <div class="col-4" data-test="card">
+            <div class="card mb-3" >
+            <img src={{ tour.picture }} class="card-img-top img-fluid" data-test="picture">
+            <div class="card-body">
+              <h5 class="card-title">{{ tour.country }}: {{ tour.title }}</h5>
+             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">{{ tour.date }}, {{ tour.nights }} дней, {{ tour.price }} Р {{ tour.stars}}★</p>
+
+                <a href="/tour/{{ tour.id }}/" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
+            </div>
+        </div>
+        </div>{% endfor %}
+{% endblock %}
